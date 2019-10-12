@@ -27,10 +27,17 @@ addWentWellButton.addEventListener('click', function(){
 
         newCard = 
         `
+        <div class="container" id=${cutContent}Container>
+            <div class='row'>
+                <div class='col-lg-9'>
+                    <button type="button" id=${cutContent} class="btn btn-primary " data-toggle="modal" data-target="#${cutContent}Modal">
+                    ${newWentWellCard.value}
+                    </button>
+                </div>    
 
-        <button type="button" id=${cutContent} class="btn btn-primary" data-toggle="modal" data-target="#${cutContent}Modal">
-        ${newWentWellCard.value}
-        </button>
+                <button id=Delete${cutContent}>X</button>
+            </div>
+        </div>
 
         <div class="modal fade" id="${cutContent}Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -55,6 +62,7 @@ addWentWellButton.addEventListener('click', function(){
             </div>
           </div>
         </div>
+
         `;
 
         // var cardSelect = document.getElementById('cutContent');
@@ -63,8 +71,10 @@ addWentWellButton.addEventListener('click', function(){
              
         // });
 
+
         socket.emit('card', {
-            card: newCard
+            card: newCard,
+            cardId: cutContent
         });
 
 

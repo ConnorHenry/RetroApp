@@ -13,9 +13,9 @@ button.addEventListener('click', function(){
     });
 });
 
-message.addEventListener('keypress', function(){
-    socket.emit('typing', handle);
-})
+// message.addEventListener('keypress', function(){
+//     socket.emit('typing', handle);
+// })
 
 socket.on('chat', function(data){
     output.innerHTML += '<p><strong>' + data.handle + ':</strong>' + data.message + '</p>';

@@ -11,6 +11,10 @@ app.get('/demo', (req, res) => res.render(
     'home.ejs'
 ))
 
+app.get('/login', (req, res) => res.render(
+    'login.ejs'
+))
+
 app.use(express.static('public'));
 var io = socket(server);
 
