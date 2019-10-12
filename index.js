@@ -21,5 +21,3 @@ io.on('connection', function(socket){
         io.sockets.emit('chat', data);
     });
 });
-
-console.log('adding comment');

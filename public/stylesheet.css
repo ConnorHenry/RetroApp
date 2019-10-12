@@ -47,7 +47,7 @@ label{
     padding: 10px 20px;
 }
 
-input{
+.commentInput{
     padding: 10px 20px;
     box-sizing: border-box;
     background: #eee;
@@ -60,7 +60,7 @@ input{
     font-size: 16px;
 }
 
-button{
+.commentButton{
     background: #575ed8;
     color: #fff;
     font-size: 18px;
@@ -84,4 +84,31 @@ button{
 
 #actionPoints{
     border: solid blue 1px
+}
+
+.addCard{
+    width: 100%;
+}
+
+.addCard:hover{
+    cursor: pointer;
+    background-color: #aaa;
+}
+
+#submitWentWellButton:hover{
+    cursor: pointer;
+}
+
+.card{
+    width: 100%;
+}
+
+.cardSelect:hover{
+    cursor: pointer;
+    background-color: #aaa;
+
+}
+
+.description{
+    width: 100%;
 }
