@@ -1,8 +1,9 @@
-var addWentWellButton = document.getElementById('wentWellAddCard');
-var addImproveButton = document.getElementById('couldImproveAddCard');
-var addActionButton = document.getElementById('actionPointsAddCard');
-var wentWellInputBox = document.getElementById('wentWellAddInputBox');
-var wentWellCards = document.getElementById('wentWellCards');
+var addWentWellButton   = document.getElementById('wentWellAddCard');
+var addImproveButton    = document.getElementById('couldImproveAddCard');
+var addActionButton     = document.getElementById('actionPointsAddCard');
+var wentWellInputBox    = document.getElementById('wentWellAddInputBox');
+var wentWellCards       = document.getElementById('wentWellCards');
+var socket              = io.connect('http://localhost:4000');
 
 addWentWellButton.addEventListener('click', function(){
     wentWellInputBox.innerHTML += 
@@ -24,7 +25,7 @@ addWentWellButton.addEventListener('click', function(){
 
         wentWellInputBox.innerHTML = '';
 
-        wentWellCards.innerHTML += 
+        newCard = 
         `
 
         <button type="button" id=${cutContent} class="btn btn-primary" data-toggle="modal" data-target="#${cutContent}Modal">
@@ -35,7 +36,7 @@ addWentWellButton.addEventListener('click', function(){
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="${cutContent}ModalLabel">${cutContent}</h5>
+                <h5 class="modal-title" id="${cutContent}ModalLabel">${content}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -54,12 +55,22 @@ addWentWellButton.addEventListener('click', function(){
             </div>
           </div>
         </div>
-        `
+        `;
 
-        var cardSelect = document.getElementById('cutContent');
+        // var cardSelect = document.getElementById('cutContent');
 
-        cardSelect.addEventListener('click', function(){
+        // cardSelect.addEventListener('click', function(){
              
+        // });
+
+        socket.emit('card', {
+            card: newCard
+        });
+
+
+        socket.on('card', function(data){
+            wentWellCards.innerHTML += data.card;
+            data.card = '';
         });
 
     });
